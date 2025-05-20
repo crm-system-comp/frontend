@@ -5,7 +5,7 @@ import OrderFormSection from "../components/OrderFormSection";
 import AuthModal from "../components/AuthModal";
 import { useGetMeQuery, useLazyGetMeQuery } from "../api/auth";
 import { useEffect, useState } from "react";
-import { getSession } from "../../session";
+import { getSession, isLoggedIn } from "../../session";
 
 const MainPage = () => {
   const session = getSession();
@@ -21,7 +21,7 @@ const MainPage = () => {
   return (
     <Box>
       <Header
-        isLoggedIn={Boolean(user)}
+        isLoggedIn={isLoggedIn()}
         username={user?.username}
         onLoginClick={() => setAuthModalOpen(true)}
       />

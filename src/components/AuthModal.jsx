@@ -32,7 +32,10 @@ const AuthModal = ({ open, onClose }) => {
   const handleSubmit = async () => {
     try {
       if (mode === "login") {
-        await login({ email: form.email, password: form.password }).unwrap();
+        await login({
+          email: form.email,
+          password: form.password,
+        }).unwrap();
       } else {
         const user = {
           username: form.username,
@@ -40,10 +43,14 @@ const AuthModal = ({ open, onClose }) => {
           password: form.password,
           role_id: 2,
         };
-        const result = await register(user).unwrap();
+        await register(user).unwrap();
+        const result = await login({
+          email: user.email,
+          password: user.password,
+        }).unwrap();
         const token = result?.access_token;
         if (token) {
-          startSession({ email: form.email, accessToken: token });
+          startSession({ email: user.email, accessToken: token });
         }
       }
       setError(null);
