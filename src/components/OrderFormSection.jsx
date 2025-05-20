@@ -7,9 +7,6 @@ const OrderFormSection = ({ onAuthRequired }) => {
 
   return (
     <Box id="order-section" sx={{ py: 6 }}>
-      <Typography variant="h4" align="center" gutterBottom>
-        Создай заказ сейчас
-      </Typography>
       <Paper elevation={3} sx={{ maxWidth: 600, mx: "auto", p: 4 }}>
         <OrderForm user={user} onAuthRequired={onAuthRequired} />
       </Paper>
