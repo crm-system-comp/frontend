@@ -19,6 +19,9 @@ export const adminApi = createApi({
       query: () => "/users",
       providesTags: ["Users"],
     }),
+    getUserById: builder.query({
+      query: (id) => `/users/${id}`,
+    }),
     getAllOrders: builder.query({
       query: () => "/orders",
       providesTags: ["Orders"],
@@ -46,4 +49,5 @@ export const {
   useGetAllOrdersQuery,
   useUpdateOrderMutation,
   useDeleteOrderMutation,
+  useGetUserByIdQuery
 } = adminApi;
